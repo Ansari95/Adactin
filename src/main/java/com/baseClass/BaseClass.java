@@ -5,6 +5,7 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class BaseClass {
 			
@@ -74,6 +75,27 @@ public class BaseClass {
 			
 			element.clear();
 		}
+		
+
+		public static void dropDown (WebElement element, String option, String value) {
+			try {
+				Select sc = new Select(element);
+				if(option.equalsIgnoreCase("byindex")) {
+					int parseInt = Integer.parseInt(value);
+					sc.selectByIndex(parseInt);
+				}
+				else if (option.equalsIgnoreCase("byvalue")) {
+					sc.selectByValue(value);
+				}
+				else if (option.equalsIgnoreCase("byVisibletext")) {
+					sc.selectByVisibleText(value);
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			  }
+			}
+			
 		
 		
 	}
